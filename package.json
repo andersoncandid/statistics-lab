@@ -4,7 +4,7 @@
   "description": "Pequeno projeto pessoal de tecnologias ferramentas de desenvolvimento web.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -19,8 +19,11 @@
   },
   "homepage": "https://github.com/andersoncandid/statistics-lab#readme",
   "devDependencies": {
+    "@babel/preset-env": "^7.29.7",
     "html-webpack-plugin": "^5.6.8",
+    "jest": "^30.5.2",
     "webpack": "^5.112.2",
-    "webpack-cli": "^7.2.3"
+    "webpack-cli": "^7.2.3",
+    "webpack-dev-server": "^6.1.0"
   }
 }
