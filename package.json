@@ -1,0 +1,26 @@
+{
+  "name": "statistics-lab",
+  "version": "1.0.0",
+  "description": "Pequeno projeto pessoal de tecnologias ferramentas de desenvolvimento web.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andersoncandid/statistics-lab.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/andersoncandid/statistics-lab/issues"
+  },
+  "homepage": "https://github.com/andersoncandid/statistics-lab#readme",
+  "devDependencies": {
+    "html-webpack-plugin": "^5.6.8",
+    "webpack": "^5.112.2",
+    "webpack-cli": "^7.2.3"
+  }
+}
