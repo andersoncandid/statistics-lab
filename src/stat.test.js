@@ -1,13 +1,17 @@
-import { values, generateNumbers } from "./stat.js";
+import { validateArray } from "./stat.js";
 
-describe("Array processing", () => {
-  test("Non-empty array", () => {
-    expect(values).not.toHaveLength(0);
+describe("Validate Array", () => {
+  test("Array not empty", () => {
+    expect(() => validateArray([])).toThrow(Error);
   });
-  test("Containing only numbers", () => {
-    expect(values.every((elem) => typeof elem === "number")).toBe(true);
+  test("Array size max 100", () => {
+    let arr = Array.from({ length: 101 }, (i) => i + 1);
+    expect(() => validateArray(arr)).toThrow(Error);
   });
-  test("Size less than or equal to 100", () => {
-    expect(values).not.toHaveLength(4);
+  test("Array with only numbers", () => {
+    expect(() => validateArray(["test"])).toThrow(Error);
+  });
+  test("Array without negative numbers", () => {
+    expect(() => validateArray([-1, -5])).toThrow(Error);
   });
 });
