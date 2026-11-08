@@ -1,11 +1,3 @@
-// Create an array with values in the range between 0 and 1000
-function getRandomArray(arrayLength) {
-  let array = Array.from({ length: arrayLength }, () => {
-    return Number((Math.random() * 1000).toFixed(2));
-  });
-  return array;
-}
-
 export function validateArray(array) {
   if (array.length <= 0) {
     throw new Error("Empty array");
@@ -23,45 +15,56 @@ export function validateArray(array) {
   });
 }
 
-// Mean
-export function getMean(array) {
-  const sum = array.reduce(
-    (previousValue, currentValue) => previousValue + currentValue,
-  );
+export function createStatCalc() {
+  // Create an array with values in the range between 0 and 1000
+  const createRandomArray = (arrayLength) => {
+    let array = Array.from({ length: arrayLength }, () => {
+      return Number((Math.random() * 1000).toFixed(2));
+    });
+    return array;
+  };
 
-  return sum / array.length;
+  const mean = (array) => {
+    const sum = array.reduce(
+      (previousValue, currentValue) => previousValue + currentValue,
+    );
+
+    return sum / array.length;
+  };
+
+  const median = (array) => {
+    const sortedArray = array.sort();
+    const arraySize = array.length;
+
+    // Array with odd size
+    if (arraySize % 2 != 0) {
+      const medianIndex = Math.floor(arraySize / 2);
+      return sortedArray[medianIndex];
+    }
+    // Array with even size
+    if (arraySize % 2 === 0) {
+      const medianIndex = arraySize / 2;
+
+      // Get the mean of the 2 middle values
+      const median =
+        (sortedArray[medianIndex - 1] + sortedArray[medianIndex]) / 2;
+
+      return median;
+    }
+  };
+  return { createRandomArray, mean, median };
 }
-
-// median
-export function getMedian(array) {
-  const sortedArray = array.sort();
-  const arraySize = array.length;
-
-  // Array with odd size
-  if (arraySize % 2 != 0) {
-    const medianIndex = Math.floor(arraySize / 2);
-    return sortedArray[medianIndex];
-  }
-  // Array with even size
-  if (arraySize % 2 === 0) {
-    const medianIndex = arraySize / 2;
-
-    // Get the mean of the 2 middle values
-    const median =
-      (sortedArray[medianIndex - 1] + sortedArray[medianIndex]) / 2;
-
-    return median;
-  }
-}
-// variance
-// standardDeviantion
-// plot
 
 // Start
-let dataArray = getRandomArray(100);
+const statCalc = createStatCalc();
+let dataArray = statCalc.createRandomArray(10);
 
 try {
   validateArray(dataArray);
 } catch (error) {
   console.log(error);
 }
+
+dataArray.forEach((ele) => console.log(ele));
+console.log("Mean: ", statCalc.mean(dataArray));
+console.log("Median: ", statCalc.median(dataArray));

@@ -1,4 +1,4 @@
-import { validateArray, getMean, getMedian } from "./stat.js";
+import { validateArray, createStatCalc } from "./stat.js";
 
 describe("Validate Array", () => {
   test("Array not empty", () => {
@@ -17,13 +17,15 @@ describe("Validate Array", () => {
 });
 
 describe("Statistics", () => {
+  const calc = createStatCalc();
+
   test("Mean", () => {
-    expect(getMean([1, 2, 3, 4, 5])).toBe(3);
+    expect(calc.mean([1, 2, 3, 4, 5])).toBeCloseTo(3);
   });
   test("Median: array of ODD size", () => {
-    expect(getMedian([8, 9, 5, 1, 6])).toBe(6);
+    expect(calc.median([8, 9, 5, 1, 6])).toBeCloseTo(6);
   });
   test("Median: array of EVEN size", () => {
-    expect(getMedian([8, 9, 5, 1])).toBe(6.5);
+    expect(calc.median([8, 9, 5, 1])).toBeCloseTo(6.5);
   });
 });
