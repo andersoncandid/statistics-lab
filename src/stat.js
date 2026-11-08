@@ -23,9 +23,36 @@ export function validateArray(array) {
   });
 }
 
-// Merge Sort
 // Mean
+export function getMean(array) {
+  const sum = array.reduce(
+    (previousValue, currentValue) => previousValue + currentValue,
+  );
+
+  return sum / array.length;
+}
+
 // median
+export function getMedian(array) {
+  const sortedArray = array.sort();
+  const arraySize = array.length;
+
+  // Array with odd size
+  if (arraySize % 2 != 0) {
+    const medianIndex = Math.floor(arraySize / 2);
+    return sortedArray[medianIndex];
+  }
+  // Array with even size
+  if (arraySize % 2 === 0) {
+    const medianIndex = arraySize / 2;
+
+    // Get the mean of the 2 middle values
+    const median =
+      (sortedArray[medianIndex - 1] + sortedArray[medianIndex]) / 2;
+
+    return median;
+  }
+}
 // variance
 // standardDeviantion
 // plot
